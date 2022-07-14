@@ -50,9 +50,4 @@ router.get('/:id/actions', validateProjectId, (req,res) => {
 })
 
 
-
-
-
-
-
 module.exports = router;
