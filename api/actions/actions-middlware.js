@@ -21,7 +21,7 @@ function validateActions(req, res, next) {
         res.status(400).json({ message: "Enter notes, description, and project Id of action"})
             return;
     }
-    req.newAction = {project_id: req.body.project_id, description: req.body.description, notes: req.body.notes}
+    req.newAction = {project_id: req.body.project_id, description: req.body.description, notes: req.body.notes, completed: req.body.completed}
     next()
 }
 

@@ -19,7 +19,7 @@ router.get('/:id', validateActionsId, (req, res, next) => {
     res.status(200).json(req.action)
 })
 
-router.post('/', validateActions, (req, res, next) => {
+router.post('/', validateActions, (req, res) => {
     Actions.insert(req.newAction)
         .then(action => {
             res.status(200).json(action)
@@ -29,7 +29,13 @@ router.post('/', validateActions, (req, res, next) => {
         })
 })
 
-
+router.put('/:id', validateActionsId, validateActions, (req, res, next) => {
+    Actions.update(req.params.id, req.newAction)
+        .then(action => {
+            res.status(200).json(action)
+        })
+        .catch(() => next({}))
+})
 
 
 
