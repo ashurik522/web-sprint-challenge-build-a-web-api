@@ -37,6 +37,14 @@ router.put('/:id', validateActionsId, validateActions, (req, res, next) => {
         .catch(() => next({}))
 })
 
+router.delete('/:id', validateActionsId, (req, res, next) => {
+    Actions.remove(req.params.id)
+        .then(() => {
+            res.status(200).json()
+        })
+        .catch(() => next({}))
+})
+
 
 
 module.exports = router
